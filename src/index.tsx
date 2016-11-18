@@ -1,8 +1,20 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as ReactRouter from 'react-router';
+
+const { Route, IndexRoute } = ReactRouter;
 import {observable} from 'mobx';
 import {observer} from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
+
+import App from './containers/App/App';
+import getRoutes from './routes';
+
+const component = (
+    <Router>
+        {getRoutes()}
+    </Router>
+);
 
 class AppState {
     @observable timer = 0;
@@ -37,4 +49,4 @@ class TimerView extends React.Component<{appState: AppState}, {}> {
 };
 
 const appState =  new AppState();
-ReactDOM.render(<TimerView appState={appState} />, document.getElementById('root'));
+ReactDOM.render(<App><TimerView appState={appState} /></App>, document.getElementById('root'));
