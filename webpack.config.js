@@ -16,7 +16,7 @@ module.exports = {
   resolve: {
     modulesDirectories: [
       'src',
-      'node_modules'
+      'node_modules',
     ],
     extensions: ['', '.js', '.ts', '.tsx']
   },
@@ -27,7 +27,8 @@ module.exports = {
     loaders: [
       {
         test: /\.tsx?$/,
-        loaders: ['react-hot-loader/webpack', 'awesome-typescript-loader'],
+        // loaders: ['react-hot-loader/webpack', 'awesome-typescript-loader'],
+        loaders: ['react-hot-loader/webpack', 'babel', 'ts-loader'],
         include: path.join(__dirname, 'src')
       },
       {

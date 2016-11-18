@@ -1,20 +1,26 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as ReactRouter from 'react-router';
+// import * as ReactRouter from 'react-router';
+// let { Route, IndexRoute } = ReactRouter;
 
-const { Route, IndexRoute } = ReactRouter;
+// let { Route, IndexRoute } = require('react-router');
+const { AppContainer } = require('react-hot-loader');
+
+// Tell Typescript that there is a global variable called module - see below
+declare var module: { hot: any };
+
 import {observable} from 'mobx';
 import {observer} from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
-import App from './containers/App/App';
-import getRoutes from './routes';
+// import App from './containers/App/App';
+// import getRoutes from './routes';
 
-const component = (
-    <Router>
-        {getRoutes()}
-    </Router>
-);
+// const component = (
+//     <Route>
+//         {getRoutes()}
+//     </Route>
+// );
 
 class AppState {
     @observable timer = 0;
@@ -49,4 +55,10 @@ class TimerView extends React.Component<{appState: AppState}, {}> {
 };
 
 const appState =  new AppState();
-ReactDOM.render(<App><TimerView appState={appState} /></App>, document.getElementById('root'));
+ReactDOM.render(
+    <AppContainer>
+        <TimerView appState={appState} />
+    </AppContainer>
+    ,
+    document.getElementById('root')
+);

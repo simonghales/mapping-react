@@ -1,16 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "module": "es6",
+    "target": "es6",
+    "moduleResolution": "node",
+    "baseUrl": "src",
     "declaration": false,
     "noImplicitAny": false,
     "removeComments": true,
     "experimentalDecorators": true,
     "noLib": false,
-    "jsx": "react",
+//    "jsx": "react",
+    "jsx": "preserve",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
     "outDir": "dist"
   },
   "exclude": [
+    "blueprints",
     "node_modules",
     "static"
   ]
